@@ -1,0 +1,106 @@
+{
+    "name": "cyborg",
+    "id": "/subscriptions/12e148f4-03fa-4cb8-a069-5cf1a950fb55/resourceGroups/learn-7457103d-249b-4682-b1cd-df33b9de7ad5/providers/Microsoft.Compute/virtualMachines/cyborg",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "westus",
+    "properties": {
+        "vmId": "c15b8e41-3926-426f-8290-1be71677c9c0",
+        "hardwareProfile": {
+            "vmSize": "Standard_D2s_v3"
+        },
+        "storageProfile": {
+            "imageReference": {
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-datacenter-gensecond",
+                "version": "latest",
+                "exactVersion": "14393.6167.230804"
+            },
+            "osDisk": {
+                "osType": "Windows",
+                "name": "cyborg_OsDisk_1_433bf7aa38014e6d80523149c1f298f2",
+                "createOption": "FromImage",
+                "caching": "ReadWrite",
+                "managedDisk": {
+                    "storageAccountType": "Premium_LRS",
+                    "id": "/subscriptions/12e148f4-03fa-4cb8-a069-5cf1a950fb55/resourceGroups/learn-7457103d-249b-4682-b1cd-df33b9de7ad5/providers/Microsoft.Compute/disks/cyborg_OsDisk_1_433bf7aa38014e6d80523149c1f298f2"
+                },
+                "deleteOption": "Delete",
+                "diskSizeGB": 127
+            },
+            "dataDisks": []
+        },
+        "osProfile": {
+            "computerName": "cyborg",
+            "adminUsername": "cyborg",
+            "windowsConfiguration": {
+                "provisionVMAgent": true,
+                "enableAutomaticUpdates": true,
+                "patchSettings": {
+                    "patchMode": "AutomaticByOS",
+                    "assessmentMode": "ImageDefault",
+                    "enableHotpatching": false
+                }
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+        "securityProfile": {
+            "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+            },
+            "securityType": "TrustedLaunch"
+        },
+        "networkProfile": {
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/12e148f4-03fa-4cb8-a069-5cf1a950fb55/resourceGroups/learn-7457103d-249b-4682-b1cd-df33b9de7ad5/providers/Microsoft.Network/networkInterfaces/cyborg395",
+                    "properties": {
+                        "deleteOption": "Delete"
+                    }
+                }
+            ]
+        },
+        "diagnosticsProfile": {
+            "bootDiagnostics": {
+                "enabled": true
+            }
+        },
+        "licenseType": "Windows_Server",
+        "provisioningState": "Updating"
+    },
+    "resources": [
+        {
+            "name": "DependencyAgentWindows",
+            "id": "/subscriptions/12e148f4-03fa-4cb8-a069-5cf1a950fb55/resourceGroups/learn-7457103d-249b-4682-b1cd-df33b9de7ad5/providers/Microsoft.Compute/virtualMachines/cyborg/extensions/DependencyAgentWindows",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "westus",
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "provisioningState": "Creating",
+                "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+                "type": "DependencyAgentWindows",
+                "typeHandlerVersion": "9.10"
+            }
+        },
+        {
+            "name": "MicrosoftMonitoringAgent",
+            "id": "/subscriptions/12e148f4-03fa-4cb8-a069-5cf1a950fb55/resourceGroups/learn-7457103d-249b-4682-b1cd-df33b9de7ad5/providers/Microsoft.Compute/virtualMachines/cyborg/extensions/MicrosoftMonitoringAgent",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "westus",
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "provisioningState": "Creating",
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "MicrosoftMonitoringAgent",
+                "typeHandlerVersion": "1.0",
+                "settings": {
+                    "workspaceId": "dc8a3fb0-bd7c-4f8a-98c7-5712aeb14742",
+                    "stopOnMultipleConnections": "true"
+                }
+            }
+        }
+    ]
+}
